@@ -1,0 +1,49 @@
+body{
+    font-size: 1.5rem;
+    font-family: "Montserrat";
+    background-color: #EEEEEE;
+}
+input , button{
+    display:flex;
+}
+
+input{
+    font-size: 1.1rem;
+    line-height: 2;
+    border-color: #393E4640;
+    
+}
+
+/* input{
+    position:relative;
+    left:10rem;
+    bottom: 2.5rem;
+} */
+h1{
+    font-family: "Montserrat Alternates";
+    font-weight: 700;
+    line-height: 2rem;
+    font-size: 3.5rem;
+    color:#393E46;
+}
+
+label{
+    padding-top: 1.5rem;
+    color: #393E46;
+}
+.content{
+    padding: 3rem 3rem;
+}
+
+button:first-child{
+    margin-top: 3rem;
+}
+
+.btn1{
+    font-size: 1.5rem;
+}
+
+.column{
+    width: 32%;
+    min-width: 400px;
+}
