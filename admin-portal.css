@@ -27,8 +27,8 @@ body{
 .card:hover{
     transition-duration: 120ms;
     background-color:rgb(46, 129, 132);
-    width: 105%;
-    height: 101%;
+    width: 102%;
+    height: 97%;
 }
 
 @media (max-width:990px) {
