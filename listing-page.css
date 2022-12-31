@@ -1,18 +1,20 @@
 /* common styles */
-body{
-    font-size: 1.5rem;
-    font-family: "Montserrat";
-    background-color: #EEEEEE;
+body {
+  font-size: 1.5rem;
+  font-family: "Montserrat";
+  background-color: #eeeeee;
 }
-input , button{
-    display:flex;
+input,
+button {
+  display: flex;
 }
 
-input,textarea{
-    font-size: 1.1rem;
-    line-height: 2;
-    border-color: #393E4640;
-    background-color: #f6f6f6;
+input,
+textarea {
+  font-size: 1.1rem;
+  line-height: 2;
+  border-color: #393e4640;
+  background-color: #f6f6f6;
 }
 
 /* input{
@@ -20,54 +22,53 @@ input,textarea{
     left:10rem;
     bottom: 2.5rem;
 } */
-h1{
-    font-family: "Montserrat Alternates";
-    font-weight: 700;
-    line-height: 2rem;
-    font-size: 3.5rem;
-    color:#393E46;
+h1 {
+  font-family: "Montserrat Alternates";
+  font-weight: 700;
+  line-height: 2rem;
+  font-size: 3.5rem;
+  color: #393e46;
 }
 
-label{
-    padding-top: 1.5rem;
-    color: #393E46;
+label {
+  padding-top: 1.5rem;
+  color: #393e46;
 }
 
-button:first-child{
-    margin-top: 3rem;
+button:first-child {
+  margin-top: 3rem;
 }
 
-.content{
-    padding: 3rem 3rem;
+.content {
+  padding: 3rem 3rem;
 }
 
-.btn1{
-    font-size: 1.5rem;
+.btn1 {
+  font-size: 1.5rem;
 }
 
-.column{
-    width: 32%;
-    min-width: 400px;
+.column {
+  width: 32%;
+  min-width: 400px;
 }
-
 
 /* Styles that specific to listing page */
-.listing-form{
-    width: 80%;
+.listing-form {
+  width: 80%;
 }
 
-.listing-page-title{
-    font-size: 2.5rem;
+.listing-page-title {
+  font-size: 2.5rem;
 }
 
-.listing-id-price{
-    width: 25%!important;
+.listing-id-price {
+  width: 25% !important;
 }
 
-.listing-button{
-    margin-top: 2%;
+.listing-button {
+  margin-top: 2%;
 }
 
-.listing-button .btn{
-    margin-top: 0;
+.listing-button .btn {
+  margin-top: 0;
 }
