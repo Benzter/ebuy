@@ -71,3 +71,11 @@ button:first-child{
 .listing-button .btn{
     margin-top: 0;
 }
+
+
+/* manage-listing page styles */
+#ml-body{
+    font-family: "Montserrat";
+    font-size: 1rem;
+}
+
