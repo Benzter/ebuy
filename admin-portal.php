@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+<?php
+  session_start();
+?>
+
+<?php
+  if(!$_SESSION['auth']){
+    header('location:login.php');
+  }else{
+    echo '<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -83,4 +91,5 @@
       crossorigin="anonymous"
     ></script>
   </body>
-</html>
+</html>';
+  }?>

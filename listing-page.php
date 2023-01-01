@@ -1,4 +1,34 @@
-<!DOCTYPE html>
+<?php
+  session_start();
+?>
+
+<?php
+    if($_POST){
+    include ('connect.php');
+
+    $item_title = $_POST['itemTitle'];
+    $image_thumbnail= $_POST['imageThumbnail'];
+    $price = $_POST['price'];
+    $item_description = $_POST['itemDescription'];
+
+    if($conn->connect_error){
+        die('connection failed :'.connect_error);
+    }else{
+        $insert = $conn->prepare("INSERT INTO listings(itemTitle,ImageThumbnail,price,itemDescription) VALUE(?,?,?,?)");
+        $insert->bind_param("ssis",$item_title,$image_thumbnail,$price,$item_description);
+        $insert->execute();
+        header( "Location: insert-success.php" );
+        $insert->close();
+        $conn->close();
+    }
+  }
+?>
+
+<?php
+  if(!$_SESSION['auth']){
+    header('location:login.php');
+  }else{
+    echo '<!DOCTYPE html>
 <html lang="en" class="h-100">
   <head>
     <meta charset="UTF-8" />
@@ -96,4 +126,6 @@
       crossorigin="anonymous"
     ></script>
   </body>
-</html>
+</html>';
+  }
+?>

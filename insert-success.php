@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+<?php
+  session_start();
+?>
+
+<?php
+  if(!$_SESSION['auth']){
+    header('location:login.php');
+  }else{
+    echo '<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -20,15 +28,16 @@
       </p>
       <hr class="my-4" />
 
-      <a class="btn btn-dark btn-lg mx-1" href="listing-page.html" role="button"
+      <a class="btn btn-dark btn-lg mx-1" href="listing-page.php" role="button"
         >Add new</a
       >
       <a
         class="btn btn-outline-dark btn-lg mx-1"
-        href="admin-portal.html"
+        href="admin-portal.php"
         role="button"
         >Cancel</a
       >
     </div>
   </body>
-</html>
+</html>';}
+?>

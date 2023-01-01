@@ -38,12 +38,12 @@
       </p>
       <hr class="my-4" />
 
-      <a class="btn btn-dark btn-lg mx-1" href="listing-page.html" role="button"
+      <a class="btn btn-dark btn-lg mx-1" href="listing-page.php" role="button"
         >Add new</a
       >
       <a
         class="btn btn-outline-dark btn-lg mx-1"
-        href="admin-portal.html"
+        href="admin-portal.php"
         role="button"
         >Admin-portal</a
       >
@@ -72,7 +72,7 @@
           />
           <div class="card-body">
             <h2 class="card-title">'. $row["itemTitle"].'</h2>
-            <h5 class="card-title">'. $row["price"].'</h5>
+            <h5 class="card-title">'. $row["price"].'$</h5>
             <p class="card-text">
             '. $row["itemDescription"].'
             

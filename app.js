@@ -1,5 +1,5 @@
 $(".add-card").click(function () {
-  window.open("listing-page.html", "_self");
+  window.open("listing-page.php", "_self");
 });
 
 $(".manage-card").click(function () {
@@ -7,5 +7,5 @@ $(".manage-card").click(function () {
 });
 
 $("#listing-cancel").click(function () {
-  window.open("admin-portal.html", "_self");
+  window.open("admin-portal.php", "_self");
 });
