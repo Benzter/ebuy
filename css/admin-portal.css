@@ -37,3 +37,12 @@ body{
         height: 99%;
     }
 }
+
+/* navbar styles */
+.navbar{
+    background-color: #212529;
+}
+
+.navbar-brand{
+    color: white!important;
+}

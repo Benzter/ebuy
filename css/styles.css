@@ -1,6 +1,6 @@
 /* common styles */
-body{
-    font-size: 1.5rem;
+.body{
+    font-size: 1rem;
     font-family: "Montserrat";
     background-color: #EEEEEE;
 }
@@ -31,10 +31,6 @@ h1{
 label{
     padding-top: 1.5rem;
     color: #393E46;
-}
-
-button:first-child{
-    margin-top: 3rem;
 }
 
 .content{
@@ -83,4 +79,37 @@ button:first-child{
 /* login page css */
 .alert{
     font-size: 1rem;
+}
+
+
+/* navbar styles */
+.navbar{
+    background-color: #212529;
+}
+
+.navbar-brand{
+    color: white;
+}
+
+.listing-container{
+    width: 90%;
+}
+
+/* manage listing card */
+.h-80{
+    height: 80%;
+    
+}
+
+.listing-card{
+    margin-bottom: -8%;
+}
+
+.h-40{
+    height: 40%;
+}
+
+/* add listing page styles */
+.listing-body{
+    font-size: 1.5rem;
 }

@@ -1,11 +1,14 @@
 <?php
   session_start();
 ?>
-
+<?php
+  include('nav.php');
+?>
 <?php
   if(!$_SESSION['auth']){
-    header('location:login.php');
+    header('location:admin-login.php');
   }else{
+    $email = $_SESSION['email'];
     echo '<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,7 +32,7 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="admin-portal.css" />
+    <link rel="stylesheet" href="css/admin-portal.css" />
 
     <!-- fontawesome -->
     <script
@@ -44,8 +47,9 @@
     ></script>
   </head>
 
-  <body class="py-3 w-75 mx-auto text-center">
-    <div class="my-5">
+  <body class="text-center">';
+    echo $nav;
+    echo '<div class="my-5">
       <h1 class="display-4 admin-portal-heading">
         Manage your listings and orders
       </h1>
@@ -54,7 +58,7 @@
       </p>
     </div>
 
-    <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 mb-3 text-center">
+    <div class="w-75 mx-auto row row-cols-1 row-cols-lg-3 row-cols-md-2 mb-3 text-center">
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm add-card">
           <div class="card-body">

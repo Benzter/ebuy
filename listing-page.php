@@ -26,7 +26,7 @@
 
 <?php
   if(!$_SESSION['auth']){
-    header('location:login.php');
+    header('location:admin-login.php');
   }else{
     echo '<!DOCTYPE html>
 <html lang="en" class="h-100">
@@ -50,16 +50,16 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
 
-  <body class="h-100">
+  <body class="h-100 body listing-body">
     <div class="row h-100">
       <div class="col-auto mx-auto my-auto column listing-form">
         <div class="card content">
           <div class="card-body">
             <div class="login">
-              <form action="add-listing.php" method="POST">
+              <form action="listing-page.php" method="POST">
                 <h1 class="card-title listing-page-title">Add your listing</h1>
 
                 <label for="ItemTitle">Item Title </label>

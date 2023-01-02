@@ -60,18 +60,19 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
 
-  <body class="h-100">
+  <body class="h-100 body">
     <div class="row h-100">
       <div class="col-auto mx-auto my-auto column">
         <div class="card content">
           <div class="card-body">
             <div class="login">
-              <form action="login.php" method="POST">
+              <form action="admin-login.php" method="POST">
                 <?php if(!empty($msg)){echo $msg;}?>
                 <h1 class="card-title">Ebuy</h1>
+                <h5 class="my-3">admin login</h5>
                 <label for="email">Email</label>
                 <input type="text" id="email" name="email" class="w-100" />
 
@@ -86,7 +87,7 @@
                   <button
                     type="submit"
                     value="submit"
-                    class="btn btn-lg btn-dark w-90 gap-10 btn1"
+                    class="btn btn-lg btn-dark w-90 gap-10 btn1 mt-5"
                   >
                     Login
                   </button>

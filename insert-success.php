@@ -4,7 +4,7 @@
 
 <?php
   if(!$_SESSION['auth']){
-    header('location:login.php');
+    header('location:admin-login.php');
   }else{
     echo '<!DOCTYPE html>
 <html lang="en">
