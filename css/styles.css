@@ -113,3 +113,8 @@ label{
 .listing-body{
     font-size: 1.5rem;
 }
+
+/* manage order styles */
+.order-heading{
+    font-family: "Montserrat";
+}
