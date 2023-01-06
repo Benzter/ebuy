@@ -44,21 +44,21 @@
         $items = array();
         $totalPrice = 0;
 
-      // $qurey = "SELECT * FROM cart WHERE email=$user_email";
-      // $result = $conn->query($qurey);
-      // while($row = $result->fetch_assoc()){
-      //     array_push($items, $row['itemName']);
-      //     $totalPrice = $totalPrice + $row["unitPrice"];
-      // }
+        $qry = "SELECT * FROM cart WHERE userEmail='$user_email'";
+        $result = $conn->query($qry);
+        while($row = $result->fetch_assoc()){
+          array_push($items, $row['itemName']);
+          $totalPrice = $totalPrice + $row["unitPrice"];
+        }
 
-        // if(count($items) > 0){
-        //     $insert = $conn->prepare("INSERT INTO orders(userFullName,userEmail,userMobile, userOrderDate, items, totalPrice) VALUE(?,?,?,?,?)");
-        //     $insert->bind_param("sssss",$user_full_name,$user_email,$user_mobile,$user_orderDate, $items,$totalPrice);
-        //     $insert->execute();
-        //     header( "Location: insert-success.php" );
-        //     $insert->close();
-        //     $conn->close();
-        // }
+        if(count($items) > 0){
+            $insert = $conn->prepare("INSERT INTO orders(userFullName,userEmail,userMobile, userOrderDate, totalPrice) VALUE(?,?,?,?,?)");
+            $insert->bind_param("sssss",$user_full_name,$user_email,$user_mobile,$user_orderDate, $totalPrice);
+            $insert->execute();
+            header( "Location: add-success.php" );
+            $insert->close();
+            $conn->close();
+        }
     }
   }
 ?>
@@ -95,13 +95,12 @@
 
   <body class="h-100 body">
     <div class="row h-100">
-      <div class="col-auto mx-auto my-auto column">
-        <div class="card content">
-          <div class="card-body">
-            <div class="login">
-              <form action="user-checkout-form.php" method="POST">
+      <div class="col-auto mx-auto my-auto" style="display: flex; justify-content:center; height: 75%;">
+        <div class="card content" >
+          <div class="card-body" style="width: 600px;">
+              <form action="user-checkout-form.php" method="POST" style="height: 100%;display: flex; flex-direction: column; justify-content: space-evenly;">
                 <h1 class="card-title checkout-page-title">Order Checkout</h1>
-
+                <br/>
                 <label for="userFullName">User Full Name </label>
                 <input
                   style="margin-bottom: 10px;"
@@ -115,7 +114,7 @@
                 <label for="userEmail">User email </label>
                 <input
                   style="margin-bottom: 10px;"
-                  type="text"
+                  type="email"
                   id="userEmail"
                   name="userEmail"
                   class="w-100"
@@ -125,7 +124,7 @@
                 <label for="userMobile">User contact number </label>
                 <input
                   style="margin-bottom: 20px;"
-                  type="text"
+                  type="number"
                   id="userMobile"
                   name="userMobile"
                   class="w-100"
@@ -141,20 +140,19 @@
                     required
                 />
 
-                <div class="checkout-button">
-                  <button type="submit" class="btn btn-dark btn-lg">
+                <div>
+                  <button type="submit" class="btn btn-dark btn-md">
                     Checkout
                   </button>
                   <button
                     id="listing-cancel"
                     type="button"
-                    class="btn btn-outline-secondary btn-lg"
+                    class="btn btn-outline-secondary btn-md"
                   >
                     Cancel
                   </button>
                 </div>
               </form>
-            </div>
           </div>
         </div>
       </div>
