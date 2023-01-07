@@ -1,14 +1,16 @@
 <!DOCTYPE html>
+
 <?php
   session_start();
   include('nav.php');
 ?>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Orders</title>
 
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,6 +21,7 @@
     />
 
     <!-- css styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -26,125 +29,103 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/orders.css" />
   </head>
   <body class="body">
+
     <?php echo '
-    <nav class="navbar bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand">' .$email. '</a>
-        <div>
-          <a class="btn btn-outline-light " href="admin-portal.php" role="button">Home</a>
-          <a class="btn btn-outline-light " href="log-out.php" role="button">Logout</a>
+      <nav class="navbar bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand">' .$email. '</a>
+          <div>
+            <a class="btn btn-outline-light " href="admin-portal.php" role="button">Home</a>
+            <a class="btn btn-outline-light " href="log-out.php" role="button">Logout</a>
+          </div>
         </div>
-      </div>
-    </nav> '
+      </nav> ';
     ?>
+
     <h1 class="text-center py-5 text-uppercase order-heading">
       Manage your orders from here
     </h1>
+    <h4 class="text-center py-2">Click to View Orders</h4>
 
-    <div
-      class="accordion accordion-flush w-75 mx-auto my-5"
-      id="accordionFlushExample"
-    >
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="flush-headingOne">
-          <button
-            class="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseOne"
-            aria-expanded="false"
-            aria-controls="flush-collapseOne"
-          >
-            <p class="fw-bold">user@email.com</p>
-            <p class="mx-3">address</p>
-          </button>
-        </h2>
-        <div
-          id="flush-collapseOne"
-          class="accordion-collapse collapse"
-          aria-labelledby="flush-headingOne"
-          data-bs-parent="#accordionFlushExample"
-        >
-          <div class="accordion-body">
-            <table class="container-fluid table">
-              <tr>
-                <td><image src="https://i.dummyjson.com/data/products/4/thumbnail.jpg" width="70px"/></td>
-                <td>OPPOF19</td>
-                <td><span>&dollar;</span>280</td>
-              </tr>
-              <tr>
-                <td><image src = "https://i.dummyjson.com/data/products/2/thumbnail.jpg" width="70px"/></td>
-                <td>iPhone X</td>
-                <td><span>&dollar;</span>899</td>
-              </tr>
-              <tr>
-              <td><image src = "https://i.dummyjson.com/data/products/3/thumbnail.jpg" width="70px"/></td>
-                <td>Samsung Universe 9</td>
-                <td><span>&dollar;</span>1249</td>
-              </tr>
-            </table>
+    <?php
+      include("connect.php");
+
+      //$conn = getDbConnection();
+
+      // SQL QUERY
+      $query = "SELECT * FROM orders";
+
+      // FETCHING DATA FROM DATABASE
+      $result = $conn->query($query);
+
+      if ($result->num_rows > 0)
+      {
+        // OUTPUT DATA OF EACH ROW
+        while($row = $result->fetch_assoc())
+        {
+          echo '
+          <div class="container" style="margin-bottom: 10px;">
+            <div class="accordion d-flex justify-content-between">
+              <lable style="margin-left: 30px;">sample@email.com</lable>
+              <button class="btn dropdown" style=""><i class="bi bi-chevron-down"></i></button>
+            </div>
+            <div class="panel">
+              <table class="container-fluid table">
+                <tr>
+                  <th>Item</th>
+                  <th>Title</th>
+                  <th>Price</th>
+                </tr>
+                <tr>
+                  <td><image src="https://i.dummyjson.com/data/products/4/thumbnail.jpg" width="70px"/></td>
+                  <td>OPPOF19</td>
+                  <td><span>&dollar;</span>280</td>
+                </tr>
+                <tr>
+                  <td><image src = "https://i.dummyjson.com/data/products/2/thumbnail.jpg" width="70px"/></td>
+                  <td>iPhone X</td>
+                  <td><span>&dollar;</span>899</td>
+                </tr>
+                <tr>
+                <td><image src = "https://i.dummyjson.com/data/products/3/thumbnail.jpg" width="70px"/></td>
+                  <td>Samsung Universe 9</td>
+                  <td><span>&dollar;</span>1249</td>
+                </tr>
+              </table>
+            </div>   
           </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="flush-headingTwo">
-          <button
-            class="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseTwo"
-            aria-expanded="false"
-            aria-controls="flush-collapseTwo"
-          >
-            Accordion Item #2
-          </button>
-        </h2>
-        <div
-          id="flush-collapseTwo"
-          class="accordion-collapse collapse"
-          aria-labelledby="flush-headingTwo"
-          data-bs-parent="#accordionFlushExample"
-        >
-          <div class="accordion-body">
-            Placeholder content for this accordion, which is intended to
-            demonstrate the <code>.accordion-flush</code> class. This is the
-            second item's accordion body. Let's imagine this being filled with
-            some actual content.
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="flush-headingThree">
-          <button
-            class="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseThree"
-            aria-expanded="false"
-            aria-controls="flush-collapseThree"
-          >
-            Accordion Item #3
-          </button>
-        </h2>
-        <div
-          id="flush-collapseThree"
-          class="accordion-collapse collapse"
-          aria-labelledby="flush-headingThree"
-          data-bs-parent="#accordionFlushExample"
-        >
-          <div class="accordion-body">
-            Placeholder content for this accordion, which is intended to
-            demonstrate the <code>.accordion-flush</code> class. This is the
-            third item's accordion body. Nothing more exciting happening here in
-            terms of content, but just filling up the space to make it look, at
-            least at first glance, a bit more representative of how this would
-            look in a real-world application.
-          </div>
-        </div>
-      </div>
-    </div>
+          ';
+
+        }
+      }
+      else {
+          echo "0 results";
+      }
+
+      $conn->close();
+
+    ?> 
+
+    <script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+          if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+          } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          } 
+        });
+      }
+    </script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
