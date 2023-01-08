@@ -1,0 +1,79 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+   
+}
+
+
+.nav{
+    background-color: #FEA1BF;
+    height: 80px;
+    width: 100%;
+    font-size: 35px;
+}
+
+.nav p{
+    padding: 30px 30px;
+
+}
+
+img{
+    width: 300px;
+    height: 200px;
+}
+
+.container{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    padding-bottom: 60px;
+    background-color: #FEA1BF;
+}
+
+.container form{
+    padding: 20px;
+    border-radius: 5px;
+    background-color:rgba(0,0,0,0.3);
+    
+    text-align: center;
+    width: 500px;
+    /* height: 400px; */
+}
+
+.container form h2{
+    font-size: 30px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.container form input, .container form select{
+    width: 100%;
+    padding: 10px 35px;
+    margin: 10px 0;
+    border-radius: 5px;
+    
+}
+
+.input-fields{
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.container form .form-btn{
+    background: #fbd0d9;
+    color: crimson;
+    text-transform: uppercase;
+    font-size: 20px;
+    width: 200px;
+    cursor: pointer;
+    margin-top: 50px;
+}
+
+.container form p{
+    margin-top: 20px;
+    font-size: 18px;
+}
