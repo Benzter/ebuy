@@ -69,30 +69,21 @@
           echo '
           <div class="container" style="margin-bottom: 10px;">
             <div class="accordion d-flex justify-content-between">
-              <lable style="margin-left: 30px;">sample@email.com</lable>
+              <lable style="margin-left: 30px;">'. $row["userName"].'</lable>
+              <lable style="margin-left: 30px;">'. $row["email"].'</lable>
               <button class="btn dropdown" style=""><i class="bi bi-chevron-down"></i></button>
             </div>
             <div class="panel">
               <table class="container-fluid table">
                 <tr>
-                  <th>Item</th>
-                  <th>Title</th>
-                  <th>Price</th>
+                  <th>Order ID</th>
+                  <th>Order Date</th>
+                  <th>Total Price</th>
                 </tr>
                 <tr>
-                  <td><image src="https://i.dummyjson.com/data/products/4/thumbnail.jpg" width="70px"/></td>
-                  <td>OPPOF19</td>
-                  <td><span>&dollar;</span>280</td>
-                </tr>
-                <tr>
-                  <td><image src = "https://i.dummyjson.com/data/products/2/thumbnail.jpg" width="70px"/></td>
-                  <td>iPhone X</td>
-                  <td><span>&dollar;</span>899</td>
-                </tr>
-                <tr>
-                <td><image src = "https://i.dummyjson.com/data/products/3/thumbnail.jpg" width="70px"/></td>
-                  <td>Samsung Universe 9</td>
-                  <td><span>&dollar;</span>1249</td>
+                  <td>'. $row["orderID"].'</td>
+                  <td>'. $row["orderDate"].'</td>
+                  <td><span>&dollar;</span>'. $row["total"].'</td>
                 </tr>
               </table>
             </div>   
