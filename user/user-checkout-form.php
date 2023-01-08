@@ -26,13 +26,18 @@
     
         if(!$hasTable){
           $qurey = "CREATE TABLE orders(
-            orderId int NOT NULL AUTO_INCREMENT,
+            id int NOT NULL AUTO_INCREMENT,
+            orderID int,
             userFullName VARCHAR(255),
             userEmail VARCHAR(255),
             userMobile VARCHAR(255),
+            userAddress VARCHAR(255),
             userOrderDate VARCHAR(255),
-            totalPrice VARCHAR(255),
-            PRIMARY KEY (orderId)
+            itemName VARCHAR(255),
+            itemQuantity int,
+            unitPrice int,
+            totalPrice int,
+            PRIMARY KEY (id)
           )";
           $conn->query($qurey);
         }
@@ -40,25 +45,25 @@
         $user_full_name = $_POST['userFullName'];
         $user_email = $_POST['userEmail'];
         $user_mobile = $_POST['userMobile'];
+        $user_address = $_POST['userAddress'];
         $user_orderDate = $_POST['userOrderDate'];
-        $items = array();
         $totalPrice = 0;
+        $orderid = rand(1000,10000);
 
         $qry = "SELECT * FROM cart WHERE userEmail='$user_email'";
         $result = $conn->query($qry);
         while($row = $result->fetch_assoc()){
-          array_push($items, $row['itemName']);
-          $totalPrice = $totalPrice + $row["unitPrice"];
+          $totalPrice = $row["itemQuantity"] * $row["unitPrice"];
+          $insert = $conn->prepare("INSERT INTO orders(orderID, userFullName,userEmail,userMobile, userAddress, userOrderDate, itemName, itemQuantity, unitPrice, totalPrice) VALUE(?,?,?,?,?,?,?,?,?,?)");
+          $insert->bind_param("dssssssddd", $orderid, $user_full_name, $user_email, $user_mobile, $user_address, $user_orderDate, $row["itemName"], $row["itemQuantity"], $row["unitPrice"], $totalPrice);
+          $insert->execute();
+          $insert->close();    
         }
-
-        if(count($items) > 0){
-            $insert = $conn->prepare("INSERT INTO orders(userFullName,userEmail,userMobile, userOrderDate, totalPrice) VALUE(?,?,?,?,?)");
-            $insert->bind_param("sssss",$user_full_name,$user_email,$user_mobile,$user_orderDate, $totalPrice);
-            $insert->execute();
-            header( "Location: add-success.php" );
-            $insert->close();
-            $conn->close();
-        }
+        
+        header( "Location: add-success.php" );
+        $sql = "DELETE FROM cart WHERE userEmail='$user_email'";
+        $conn->query($sql);
+        $conn->close();
     }
   }
 ?>
@@ -95,13 +100,13 @@
 
   <body class="h-100 body">
     <div class="row h-100">
-      <div class="col-auto mx-auto my-auto" style="display: flex; justify-content:center; height: 75%;">
-        <div class="card content" >
+      <div class="col-auto mx-auto my-auto" style="display: flex; justify-content:center; height: 100;">
+        <div class="card content">
           <div class="card-body" style="width: 600px;">
               <form action="user-checkout-form.php" method="POST" style="height: 100%;display: flex; flex-direction: column; justify-content: space-evenly;">
                 <h1 class="card-title checkout-page-title">Order Checkout</h1>
                 <br/>
-                <label for="userFullName">User Full Name </label>
+                <label for="userFullName">Enter Full Name </label>
                 <input
                   style="margin-bottom: 10px;"
                   type="text"
@@ -111,7 +116,7 @@
                   required
                 />
               
-                <label for="userEmail">User email </label>
+                <label for="userEmail">Enter email </label>
                 <input
                   style="margin-bottom: 10px;"
                   type="email"
@@ -121,7 +126,7 @@
                   required
                 />
 
-                <label for="userMobile">User contact number </label>
+                <label for="userMobile">Enter contact number </label>
                 <input
                   style="margin-bottom: 20px;"
                   type="number"
@@ -130,6 +135,18 @@
                   class="w-100"
                   required
                 />
+
+                <label for="userAddress">Enter Address </label>
+                <textarea
+                  style="margin-bottom: 20px;"
+                  type="text"
+                  cols="10"
+                  rows="5"
+                  id="userAddress"
+                  name="userAddress"
+                  class="w-100"
+                  required
+                ></textarea>
 
                 <label for="userOrderDate">Order Date </label>
                 <input
