@@ -8,7 +8,8 @@
 
 
 .nav{
-    background-color: #FEA1BF;
+    background-color: black;
+    color: white;
     height: 80px;
     width: 100%;
     font-size: 35px;
@@ -31,7 +32,7 @@ img{
     justify-content: center;
     padding: 20px;
     padding-bottom: 60px;
-    background-color: #FEA1BF;
+    background-color: white;
 }
 
 .container form{
@@ -64,8 +65,8 @@ img{
 }
 
 .container form .form-btn{
-    background: #fbd0d9;
-    color: crimson;
+    background: black;
+    color: white;
     text-transform: uppercase;
     font-size: 20px;
     width: 200px;

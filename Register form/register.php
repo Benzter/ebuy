@@ -26,7 +26,7 @@
     <div class="container">
         
             <form onsubmit="return validate();" action="register.php" method="post">
-                <h2>User Register</h2>
+                <h2>User Registration</h2>
                 <input id="userName" class="input-fields" type="text" name="name" placeholder="Enter your name" >
                 <input id="address" class="input-fields" type="text" name="address" placeholder="Enter your address">
                 <input id="email" class="input-fields" type="email" name="email" placeholder="Enter your email">
