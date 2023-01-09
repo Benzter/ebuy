@@ -69,8 +69,8 @@
           echo '
           <div class="container" style="margin-bottom: 10px;">
             <div class="accordion d-flex justify-content-between">
-              <lable style="margin-left: 30px;">'. $row["userName"].'</lable>
-              <lable style="margin-left: 30px;">'. $row["email"].'</lable>
+              <lable style="margin-left: 30px;">'. $row["userFullName"].'</lable>
+              <lable style="margin-left: 30px;">'. $row["userEmail"].'</lable>
               <button class="btn dropdown" style=""><i class="bi bi-chevron-down"></i></button>
             </div>
             <div class="panel">
@@ -78,12 +78,18 @@
                 <tr>
                   <th>Order ID</th>
                   <th>Order Date</th>
+                  <th>Item Name</th>
+                  <th>Quantity</th>
+                  <th>Unit Price</th>
                   <th>Total Price</th>
                 </tr>
                 <tr>
                   <td>'. $row["orderID"].'</td>
-                  <td>'. $row["orderDate"].'</td>
-                  <td><span>&dollar;</span>'. $row["total"].'</td>
+                  <td>'. $row["userOrderDate"].'</td>
+                  <td>'. $row["itemName"].'</td>
+                  <td>'. $row["itemQuantity"].'</td>
+                  <td><span>&dollar;</span>'. $row["unitPrice"].'</td>
+                  <td><span>&dollar;</span>'. $row["totalPrice"].'</td>
                 </tr>
               </table>
             </div>   
