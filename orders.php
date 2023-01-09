@@ -48,7 +48,7 @@
     <h1 class="text-center py-5 text-uppercase order-heading">
       Manage your orders from here
     </h1>
-    <h4 class="text-center py-2">Click to View Orders</h4>
+    <h4 class="text-center py-5">Click to View Orders</h4>
 
     <?php
       include("connect.php");
@@ -69,8 +69,7 @@
           echo '
           <div class="container" style="margin-bottom: 10px;">
             <div class="accordion d-flex justify-content-between">
-              <lable style="margin-left: 30px;">'. $row["userFullName"].'</lable>
-              <lable style="margin-left: 30px;">'. $row["userEmail"].'</lable>
+              <lable style="color: #30386b; margin-left: 80px;"><b>'. $row["userFullName"].'</b></lable>
               <button class="btn dropdown" style=""><i class="bi bi-chevron-down"></i></button>
             </div>
             <div class="panel">
@@ -86,8 +85,8 @@
                 <tr>
                   <td>'. $row["orderID"].'</td>
                   <td>'. $row["userOrderDate"].'</td>
-                  <td>'. $row["itemName"].'</td>
-                  <td>'. $row["itemQuantity"].'</td>
+                  <td class="text-primary">'. $row["itemName"].'</td>
+                  <td class="text-primary">'. $row["itemQuantity"].'</td>
                   <td><span>&dollar;</span>'. $row["unitPrice"].'</td>
                   <td><span>&dollar;</span>'. $row["totalPrice"].'</td>
                 </tr>
@@ -105,7 +104,8 @@
       $conn->close();
 
     ?> 
-
+    <br><br>
+    
     <script>
       var acc = document.getElementsByClassName("accordion");
       var i;
