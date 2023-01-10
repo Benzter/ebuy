@@ -75,6 +75,14 @@
             <div class="panel">
               <table class="container-fluid table">
                 <tr>
+                  <th>User Address</th>
+                  <td colspan="3">'. $row["userAddress"].'</td>
+                </tr>
+                <tr>
+                  <th>email</th>
+                  <td colspan="3">'. $row["userEmail"].'</td>
+                </tr>
+                <tr>
                   <th>Order ID</th>
                   <th>Order Date</th>
                   <th>Item Name</th>
