@@ -1,6 +1,9 @@
 <?php
+session_start();
+?>
+
+<?php
     include('connect.php');
-   
    ?>
 
 <?php
@@ -15,7 +18,7 @@ if($_POST){
     $itemTitle = $row['itemTitle'];
     $quantity = $_POST['quantity'];  
     $price = $row['price'];
-    $userEmail = "sithum123@gmail.com";
+    $userEmail = $_SESSION['userEmail'];
 
     
 
@@ -94,12 +97,16 @@ if($_POST){
             </li>
           </ul>
           <form class="d-flex" action="cart.php">
-            <button class="btn btn-outline-dark" type="submit" >
-              <i class="bi-cart-fill me-1"></i>
+            <button class="btn btn-outline-dark mx-2 px-3" type="submit" >
               Cart
-              <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
             </button>
           </form>
+          <form class="d-flex" action="user-logout.php" method="POST">
+            <button class="btn btn-outline-dark px-3" type="submit" >
+              Logout     
+            </button>
+          </form>
+          
         </div>
       </div>
     </nav>
@@ -157,6 +164,7 @@ if($_POST){
                       />
                     </div>
                     <button class="btn btn-outline-dark mt-auto w-100"  name="add" value="'.$row["itemId"].'">
+                    
                       Add to cart
                     </button>
                   </form>

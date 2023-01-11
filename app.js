@@ -14,3 +14,6 @@ $(".orders").click(function () {
   window.open("orders.php", "_self");
 });
 
+$("#order-cancel").click(function () {
+  window.open("home-index.php", "_self");
+});

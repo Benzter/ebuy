@@ -4,22 +4,21 @@ session_start();
 
 <?php
     include 'connect.php';
-
 ?>
 
 <?php 
 
 
 
-    if(isset($_POST['submit'])){
+    if($_POST){
 
-        $email = mysqli_real_escape_string($conn,$_POST['email']);
-        $password = mysqli_real_escape_string($conn,$_POST['password']);
-
-   
+        $email = $_POST['email'];
+        $password =$_POST['password'];
 
         
-        $sql ="SELECT * FROM users WHERE email = '$email' And password='$password';";
+
+       
+        $sql ="SELECT * FROM users WHERE email = '$email' And password='$password'";
 
         $result= mysqli_query($conn,$sql);
 
@@ -29,7 +28,8 @@ session_start();
             $_SESSION['user_id']=$user['id'];
             $_SESSION['userEmail'] = $email;
             $_SESSION["userAuth"] = true;
-             
+            
+            echo $_SESSION['userEmail'];
              //header('Location:home-index.php');
             header('location: home-index.php');
             
@@ -71,7 +71,7 @@ session_start();
 
     <div class="container">
 
-            <form method="post">
+            <form method="post" action="login.php">
                 <h2>User Log In</h2>
                 <?php
                 if(!empty($msg)){echo $msg;}
