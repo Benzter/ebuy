@@ -9,13 +9,12 @@
       if($conn->connect_error){
         die('connection failed :'.connect_error);
       }else{
-        $qurey = "SELECT orders FROM information_schema.tables
+        $qurey = "SELECT table_name FROM information_schema.tables
         WHERE table_schema = 'ebuy';";
         $result = $conn->query($qurey);
         $output = $result;
         $hasTable = false;
         while ($row = $result->fetch_assoc()) {
-          echo "<script>console.log('Debug Objects: " . $row['table_name'] . "' );</script>";
           if($row['table_name'] == "orders"){
             $hasTable = true;
             break;
@@ -52,27 +51,30 @@
 
         $qry = "SELECT * FROM cart WHERE userEmail='$user_email'";
         $result = $conn->query($qry);
-        while($row = $result->fetch_assoc()){
-          $totalPrice = $row["itemQuantity"] * $row["unitPrice"];
-          $insert = $conn->prepare("INSERT INTO orders(orderID, userFullName,userEmail,userMobile, userAddress, userOrderDate, itemName, itemQuantity, unitPrice, totalPrice) VALUE(?,?,?,?,?,?,?,?,?,?)");
-          $insert->bind_param("dssssssddd", $orderid, $user_full_name, $user_email, $user_mobile, $user_address, $user_orderDate, $row["itemName"], $row["itemQuantity"], $row["unitPrice"], $totalPrice);
-          $insert->execute();
-          $insert->close();    
+
+        if ($result->num_rows > 0){
+          while($row = $result->fetch_assoc()){
+            $totalPrice = $row["quantity"] * $row["price"];
+            $insert = $conn->prepare("INSERT INTO orders(orderID, userFullName,userEmail,userMobile, userAddress, userOrderDate, itemName, itemQuantity, unitPrice, totalPrice) VALUE(?,?,?,?,?,?,?,?,?,?)");
+            $insert->bind_param("dssssssddd", $orderid, $user_full_name, $user_email, $user_mobile, $user_address, $user_orderDate, $row["itemName"], $row["quantity"], $row["price"], $totalPrice);
+            $insert->execute();
+            $insert->close();   
+          }
+          header( "Location: order-added.php" ); 
+          $sql = "DELETE FROM cart WHERE userEmail='$user_email'";
+          $conn->query($sql);
+          $conn->close();
+        } else{
+          echo '<script>alert("Please enter correct email!")</script>';
+          $conn->close();
         }
         
-        header( "Location: order-added.php" );
-        $sql = "DELETE FROM cart WHERE userEmail='$user_email'";
-        $conn->query($sql);
-        $conn->close();
     }
   }
 ?>
 
 
 <?php
-//   if(!$_SESSION['auth']){
-//     header('location:user-login.php');
-//   }else{
     echo '<!DOCTYPE html>
 <html lang="en" class="h-100">
   <head>
@@ -103,7 +105,7 @@
       <div class="col-auto mx-auto my-auto" style="display: flex; justify-content:center; height: 100;">
         <div class="card content">
           <div class="card-body" style="width: 600px;">
-              <form action="user-checkout-form.php" method="POST" style="height: 100%;display: flex; flex-direction: column; justify-content: space-evenly;">
+              <form action="checkout.php" method="POST" style="height: 100%;display: flex; flex-direction: column; justify-content: space-evenly;">
                 <h1 class="card-title checkout-page-title">Order Checkout</h1>
                 <br/>
                 <label for="userFullName">Enter Full Name </label>
@@ -184,5 +186,4 @@
     ></script>
   </body>
 </html>';
-  //}
 ?>
