@@ -21,7 +21,7 @@
       </p>
       <hr class="my-4" />
 
-      <a class="btn btn-dark btn-lg mx-1" href="listing-page.php" role="button"
+      <a class="btn btn-dark btn-lg mx-1" href="admin-login.php" role="button"
         >OK</a
       >
     </div>
