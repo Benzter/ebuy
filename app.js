@@ -13,3 +13,4 @@ $("#listing-cancel").click(function () {
 $(".orders").click(function () {
   window.open("orders.php", "_self");
 });
+
