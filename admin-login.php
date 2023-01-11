@@ -22,7 +22,7 @@
         $user = mysqli_fetch_assoc($showResult);
         $_SESSION['email'] = $user['email'];
         $_SESSION['auth'] ='true';
-        
+             
         header("Location: admin-portal.php");
       }
       else{

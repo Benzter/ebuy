@@ -3,8 +3,25 @@
 <?php
   session_start();
   include('nav.php');
-?>
+  include("connect.php");
+  
+  if($_POST){
+    $id = $_POST["fulfilled"];
+    $sql = "DELETE FROM orders WHERE id=$id";
 
+    if ($conn->query($sql) === TRUE) {
+      header("Location: orders.php");
+   } else {
+       echo "Error deleting record: " . $conn->error;
+   }
+
+   $conn->close();
+  }
+
+if(!$_SESSION['auth']){
+    header('location:admin-login.php');
+  }else{
+    echo '
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -31,27 +48,25 @@
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/orders.css" />
   </head>
-  <body class="body">
+  <body class="body">';
 
-    <?php echo '
-      <nav class="navbar bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand">' .$email. '</a>
-          <div>
-            <a class="btn btn-outline-light " href="admin-portal.php" role="button">Home</a>
-            <a class="btn btn-outline-light " href="log-out.php" role="button">Logout</a>
-          </div>
-        </div>
-      </nav> ';
-    ?>
-
+    echo '<nav class="navbar bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand">' .$email. '</a>
+      <div>
+        <a class="btn btn-outline-light " href="admin-portal.php" role="button">Home</a>
+        <a class="btn btn-outline-light " href="log-out.php" role="button">Logout</a>
+      </div>
+    </div>
+  </nav> ';
+    echo '
     <h1 class="text-center py-5 text-uppercase order-heading">
       Manage your orders from here
     </h1>
-    <h4 class="text-center py-5">Click to View Orders</h4>
+    <h4 class="text-center py-5">Click to View Orders</h4>';
 
-    <?php
-      include("connect.php");
+
+      
 
       //$conn = getDbConnection();
 
@@ -67,12 +82,20 @@
         while($row = $result->fetch_assoc())
         {
           echo '
-          <div class="container" style="margin-bottom: 10px;">
-            <div class="accordion d-flex justify-content-between">
-              <lable style="color: #30386b; margin-left: 80px;"><b>'. $row["userFullName"].'</b></lable>
-              <button class="btn dropdown" style=""><i class="bi bi-chevron-down"></i></button>
+          <div class="container" >
+            <div class="accordion d-flex shadow">
+              <lable class="my-auto fw-bold fs-5 ms-3 ">'. $row["itemName"].'</lable>
+              <p class="my-auto ms-3">X</p>
+              <lable class="my-auto ms-3 fw-normal fs-5">'. $row["itemQuantity"].'</lable>
+              <div class=" ms-auto ">
+              <lable class="my-auto fw-normal fs-5">'. $row["userEmail"].'</lable>
+              <button class="btn dropdown ms-auto" style=""><i class="bi bi-chevron-down"></i></button>
+              </div>
             </div>
             <div class="panel">
+              <form action="orders.php" method="post">
+                  <button name="fulfilled" type="submit" class="btn btn-warning mt-2" value="'. $row["id"].'">Fulfilled</button>
+                </form>
               <table class="container-fluid table">
                 <tr>
                   <th>User Address</th>
@@ -98,6 +121,7 @@
                   <td><span>&dollar;</span>'. $row["unitPrice"].'</td>
                   <td><span>&dollar;</span>'. $row["totalPrice"].'</td>
                 </tr>
+                
               </table>
             </div>   
           </div>
@@ -111,7 +135,8 @@
 
       $conn->close();
 
-    ?> 
+    echo '
+   
     <br><br>
     
     <script>
@@ -137,4 +162,6 @@
       crossorigin="anonymous"
     ></script>
   </body>
-</html>
+</html>';
+    }
+    ?>

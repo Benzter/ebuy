@@ -4,12 +4,12 @@
 
 <?php
     if($_POST){
-      include ('../connect.php');
+      include ('connect.php');
 
       if($conn->connect_error){
         die('connection failed :'.connect_error);
       }else{
-        $qurey = "SELECT table_name FROM information_schema.tables
+        $qurey = "SELECT orders FROM information_schema.tables
         WHERE table_schema = 'ebuy';";
         $result = $conn->query($qurey);
         $output = $result;
@@ -60,7 +60,7 @@
           $insert->close();    
         }
         
-        header( "Location: add-success.php" );
+        header( "Location: order-added.php" );
         $sql = "DELETE FROM cart WHERE userEmail='$user_email'";
         $conn->query($sql);
         $conn->close();

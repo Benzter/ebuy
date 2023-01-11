@@ -19,7 +19,7 @@ session_start();
    
 
         
-        $sql ="SELECT * FROM register WHERE email = '$email' And password='$password';";
+        $sql ="SELECT * FROM users WHERE email = '$email' And password='$password';";
 
         $result= mysqli_query($conn,$sql);
 
@@ -31,7 +31,7 @@ session_start();
             $_SESSION["userAuth"] = true;
              
              //header('Location:home-index.php');
-            header('location:Testing-page.php');
+            header('location: home-index.php');
             
         }else{
                 $msg = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -79,7 +79,7 @@ session_start();
                 <input class="input-fields" type="email" name="email" placeholder="Enter your email">
                 <input class="input-fields" type="password" name="password" placeholder="Enter your password">
                 <input type="submit" name="submit" value="log in" class="form-btn">
-                <p>no account yet? <a href="CreatAccount.php">register now</a> </p>
+                <p>no account yet? <a href="register.php">register now</a> </p>
             </form>
     </div>
     

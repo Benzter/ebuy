@@ -34,7 +34,7 @@
                 <input id="cpassword" class="input-fields" type="password" name="cpassword" placeholder="confirm your password">
                 
                 <input type="submit" name="submit" value="REGISTER" class="form-btn" >
-                <p>already have an account? <a href="#">log in now</a> </p>
+                <p>already have an account? <a href="login.php">log in now</a> </p>
             </form>
     </div>
 
