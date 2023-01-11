@@ -7,7 +7,8 @@ session_start();
    ?>
 
 <?php
-if($_POST){
+if($_SESSION["userAuth"]){
+  if($_POST){
     $item_id = $_POST['add'];
     
 
@@ -37,7 +38,7 @@ if($_POST){
   }
     
 }
-?>
+echo '
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -118,9 +119,9 @@ if($_POST){
         <h2 class="fw-bolder mb-4">All products</h2>
         <div
           class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center"
-        >
+        >';
 
-        <?php
+        
 
         $qurey = "SELECT * FROM listings";
 
@@ -173,8 +174,8 @@ if($_POST){
         </div>
       </div>';
         }}
-        ?>
-          
+        
+        echo '  
         </div>
       </div>
     </section>
@@ -189,4 +190,9 @@ if($_POST){
     <!-- Core theme JS-->
     <script src="app.js"></script>
   </body>
-</html>
+</html>';
+      }
+      else{
+        header( "Location: login.php" );
+      }
+      ?>
