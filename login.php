@@ -30,11 +30,12 @@ session_start();
             $_SESSION['userEmail'] = $email;
             $_SESSION["userAuth"] = true;
              
-             header('Location:home-index.php');
+             //header('Location:home-index.php');
+            header('location:Testing-page.php');
             
         }else{
                 $msg = '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+    <strong>Something Wrong!</strong> Invalid user name or password
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>';
             ?>
@@ -60,7 +61,7 @@ session_start();
 <body>
 
     <div class="nav">
-        <p>ebay</p>
+        <p>ebuy</p>
         
            
     
@@ -78,7 +79,7 @@ session_start();
                 <input class="input-fields" type="email" name="email" placeholder="Enter your email">
                 <input class="input-fields" type="password" name="password" placeholder="Enter your password">
                 <input type="submit" name="submit" value="log in" class="form-btn">
-                <p>no account yet? <a href="#">register now</a> </p>
+                <p>no account yet? <a href="CreatAccount.php">register now</a> </p>
             </form>
     </div>
     
