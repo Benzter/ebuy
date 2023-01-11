@@ -78,7 +78,7 @@
       </div>
 
       <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card mb-4 rounded-3 shadow-sm orders">
           <div class="card-body">
             <i class="fa-sharp fa-solid fa-cart-shopping portal-icon"></i>
             <h1 class="view-order-heading portal-card-title">View orders</h1>
