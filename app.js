@@ -9,3 +9,8 @@ $(".manage-card").click(function () {
 $("#listing-cancel").click(function () {
   window.open("admin-portal.php", "_self");
 });
+
+$(".orders").click(function () {
+  window.open("orders.php", "_self");
+});
+
