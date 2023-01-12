@@ -69,8 +69,7 @@ echo '
       crossorigin="anonymous"
     />
 
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/home-styles.css" rel="stylesheet" />
+    
   </head>
   <body>
     <!-- Navigation-->
